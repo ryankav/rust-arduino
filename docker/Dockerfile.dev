@@ -1,0 +1,6 @@
+FROM base_rust_arduino
+
+COPY . .
+
+CMD ["/bin/bash"]
+
