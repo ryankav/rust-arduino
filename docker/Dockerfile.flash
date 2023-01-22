@@ -1,0 +1,12 @@
+FROM base_rust_arduino
+
+ARG DEVICE_PATH=/dev/ttyACM0
+
+ENV RAVEDUDE_PORT=${DEVICE_PATH}
+
+COPY . .
+
+RUN cargo build --manifest-path=src/initial/Cargo.toml 
+
+CMD cargo run --manifest-path=src/initial/Cargo.toml
+
