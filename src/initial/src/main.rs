@@ -16,11 +16,11 @@ fn main() -> ! {
         led.toggle();
         arduino_hal::delay_ms(500);
         led.toggle();
-        arduino_hal::delay_ms(500);
+        arduino_hal::delay_ms(1000);
         led.toggle();
         arduino_hal::delay_ms(500);
         led.toggle();
-        arduino_hal::delay_ms(5000);
+        arduino_hal::delay_ms(1000);
     }
 }
 

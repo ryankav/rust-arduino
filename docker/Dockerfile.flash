@@ -4,6 +4,16 @@ ARG DEVICE_PATH=/dev/ttyACM0
 
 ENV RAVEDUDE_PORT=${DEVICE_PATH}
 
+COPY rust-toolchain.toml rust-toolchain.toml
+COPY .cargo/ .cargo/
+COPY boards/ boards/
+COPY src/initial/Cargo.toml src/initial/
+# This is a hack to cache dependencies and allow for a wuicker inner loop
+RUN echo "#![no_std]\n#![no_main]\nuse panic_halt as _;\n#[arduino_hal::entry]\nfn main() -> ! {loop{}}" > src/initial/dummy.rs
+RUN sed -i 's#src/main.rs#dummy.rs#' src/initial/Cargo.toml
+RUN cargo build --manifest-path=src/initial/Cargo.toml --release
+RUN sed -i 's#dummy.rs#src/main.rs#' src/initial/Cargo.toml
+
 COPY . .
 
 RUN cargo build --manifest-path=src/initial/Cargo.toml 
