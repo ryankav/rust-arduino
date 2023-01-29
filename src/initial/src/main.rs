@@ -3,6 +3,8 @@
 
 use panic_halt as _;
 
+const MORSE_UNIT = 500;
+
 enum MorseChar {
   Dash,
   Dot
@@ -49,7 +51,7 @@ fn main() -> ! {
 
     // Digital pin 13 is also connected to an onboard LED marked "L"
     let mut led = pins.d13.into_output();
-    led.set_high();
+    led.set_low();
 
     loop {
         led.toggle();
