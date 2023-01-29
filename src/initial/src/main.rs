@@ -6,40 +6,40 @@ use panic_halt as _;
 const MORSE_UNIT = 500;
 
 enum MorseChar {
-  Dash,
-  Dot
+  Dah,
+  Dit
 }
 
 fn to_morse(character: char) {
-  use MoorseChar::{Dot, Dash};
+  use MoorseChar::{Dit, Dah};
 
   let _ = match character {
-    'a' => [Dot, Dash],
-    'b' => [Dash, Dot, Dot, Dot],
-    'c' => [Dash, Dot, Dash, Dot],
-    'd' => [Dash, Dot, Dot],
-    'e' => [Dot],
-    'f' => [Dot, Dot, Dash, Dot],
-    'g' => [Dash, Dash, Dot],
-    'h' => [Dot, Dot, Dot, Dot],
-    'i' => [Dot, Dot],
-    'j' => [Dot, Dash, Dash, Dash],
-    'k' => [Dash, Dot, Dash],
-    'l' => [Dot, Dash, Dot, Dot],
-    'm' => [Dash, Dash],
-    'n' => [Dash, Dot],
-    'o' => [Dash, Dash, Dash],
-    'p' => [Dot, Dash, Dash, Dot],
-    'q' => [Dash, Dash, Dot, Dash],
-    'r' => [Dot, Dash, Dot],
-    's' => [Dot, Dot, Dot],
-    't' => [Dash],
-    'u' => [Dot, Dot, Dash],
-    'v' => [Dot, Dot, Dot, Dash],
-    'w' => [Dot, Dash, Dash],
-    'x' => [Dash, Dot, Dot, Dash],
-    'y' => [Dash, Dot, Dash, Dash],
-    'z' => [Dash, Dash, Dot, Dot],
+    'a' => [Dit, Dah],
+    'b' => [Dah, Dit, Dit, Dit],
+    'c' => [Dah, Dit, Dah, Dit],
+    'd' => [Dah, Dit, Dit],
+    'e' => [Dit],
+    'f' => [Dit, Dit, Dah, Dit],
+    'g' => [Dah, Dah, Dit],
+    'h' => [Dit, Dit, Dit, Dit],
+    'i' => [Dit, Dit],
+    'j' => [Dit, Dah, Dah, Dah],
+    'k' => [Dah, Dit, Dah],
+    'l' => [Dit, Dah, Dit, Dit],
+    'm' => [Dah, Dah],
+    'n' => [Dah, Dit],
+    'o' => [Dah, Dah, Dah],
+    'p' => [Dit, Dah, Dah, Dit],
+    'q' => [Dah, Dah, Dit, Dah],
+    'r' => [Dit, Dah, Dit],
+    's' => [Dit, Dit, Dit],
+    't' => [Dah],
+    'u' => [Dit, Dit, Dah],
+    'v' => [Dit, Dit, Dit, Dah],
+    'w' => [Dit, Dah, Dah],
+    'x' => [Dah, Dit, Dit, Dah],
+    'y' => [Dah, Dit, Dah, Dah],
+    'z' => [Dah, Dah, Dit, Dit],
     _ => unimplemented!("No morse conversion for char")
   };
 }
