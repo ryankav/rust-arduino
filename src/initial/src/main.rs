@@ -10,10 +10,10 @@ enum MorseChar {
   Dit
 }
 
-fn to_morse(character: char) {
-  use MoorseChar::{Dit, Dah};
+fn to_morse(character: &char) -> [MorseChar] {
+  use MorseChar::{Dit, Dah};
 
-  let _ = match character {
+  match character {
     'a' => [Dit, Dah],
     'b' => [Dah, Dit, Dit, Dit],
     'c' => [Dah, Dit, Dah, Dit],
@@ -41,7 +41,7 @@ fn to_morse(character: char) {
     'y' => [Dah, Dit, Dah, Dah],
     'z' => [Dah, Dah, Dit, Dit],
     _ => unimplemented!("No morse conversion for char")
-  };
+  }
 }
 
 #[arduino_hal::entry]
@@ -51,17 +51,25 @@ fn main() -> ! {
 
     // Digital pin 13 is also connected to an onboard LED marked "L"
     let mut led = pins.d13.into_output();
+    let word = "sos";
     led.set_low();
 
     loop {
-        led.toggle();
-        arduino_hal::delay_ms(500);
-        led.toggle();
-        arduino_hal::delay_ms(500);
-        led.toggle();
-        arduino_hal::delay_ms(500);
-        led.toggle();
-        arduino_hal::delay_ms(1000);
+      for c in word.chars() {
+        for sym in to_morse(c) {
+          let time = match sym {
+            MorseChar::Dah => 3 * MORSE_UNIT, 
+            MorseChar::Dit => MORSE_UNIT,
+          };
+          
+          led.toggle();
+          arduino_hal::delay_ms(time);
+          led.toggle();
+          arduino_hal::delay_ms(MORSE_UNIT);
+        }
+        arduino_hal::delay_ms(2 * MORSE_UNIT);
+      }
+      arduino_hal::delay_ms(4 * MORSE_UNIT);
     }
 }
 
