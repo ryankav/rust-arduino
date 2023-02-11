@@ -1,6 +1,8 @@
 FROM base_rust_arduino
 
-COPY . .
+ARG PORT=/dev/ttyACM0
+
+ENV RAVEDUDE_PORT=$PORT
 
 CMD ["/bin/bash"]
 

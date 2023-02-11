@@ -28,5 +28,5 @@ fi
 
 docker build -t base_rust_arduino:latest -f docker/Dockerfile.base .
 docker build --build-arg DEVICE_PATH="${DEVICE_PATH}" -t flash_rust_arduino:latest -f docker/Dockerfile.flash .
-docker run -d --device=${DEVICE_PATH}:${DEVICE_PATH} flash_rust_arduino
+docker run -d --privileged --device=${DEVICE_PATH}:${DEVICE_PATH} flash_rust_arduino
 
