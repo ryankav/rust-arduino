@@ -104,10 +104,17 @@ version = "0.1.0"
 dependencies = [
  "arduino-hal",
  "embedded-hal",
+ "morsec",
  "nb 0.1.3",
  "panic-halt",
  "ufmt",
 ]
+
+[[package]]
+name = "morsec"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eabc80c9287cc5968170cc88c9458ff0dfd9c8eb02227b7125bbc9d07d3389d8"
 
 [[package]]
 name = "nb"

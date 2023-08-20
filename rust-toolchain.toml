@@ -1,5 +1,7 @@
 [toolchain]
-channel = "nightly-2022-07-10"
-components = ["rust-src"]
+# look into making the channel compatible with different OS
+channel = "nightly-2022-10-22"
+components = ["clippy", "rustfmt", "rust-analyzer", "rust-src"]
 profile = "minimal"
+targets = ["avr-unknown-unknown"]
 
